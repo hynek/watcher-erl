@@ -1,0 +1,25 @@
+watcher.erl - a library for monitoring line oriented files
+
+Copyright (c) 2009 Hynek Schlawack <hs+git@ox.cx>
+All Rights Reserved
+
+
+It consists practically only of one public function: `watch/2' which
+is started with the file name to monitor (most probably a log file)
+and a PID which is notified
+
+1. When a new line arrives:
+
+{line, "text"}
+
+2. The file has been rotated (ie. moved away and replaced by an empty
+   file:
+
+file_rotated
+
+.
+
+
+For convenience, there is also a function `start/2' which takes the
+same arguments and whose only purpose is to spawn `watch/2' and return
+the PID.
